@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+    <p:link outcome="index" value="Início"/>
+    <h:form id="formulario">
+        <p:messages id="messages" showDetail="true" closable="true">
+            <p:autoUpdate/>
+        </p:messages>
+        <div style="display: flex; align-items: center; flex-direction: column">
+
+            <div class="ui-fluid formgrid grid">
+                <p:panel header="Planetas cadastrados">
+                    <p:commandButton value="Encontrar maior ID" action="#{planetaBean.encontrarMaiorId}"></p:commandButton>
+                    <p:dataTable value="#{planetaBean.lista}" var="planeta">
+                        <p:column headerText="Id"><p:outputLabel value="#{planeta.idGalactico}"/></p:column>
+                        <p:column headerText="Nome"><p:outputLabel value="#{planeta.nome}"/></p:column>
+                        <p:column headerText="Coord X"><p:outputLabel value="#{planeta.coordX}"/></p:column>
+                        <p:column headerText="Coord Y"><p:outputLabel value="#{planeta.coordY}"/></p:column>
+                        <p:column headerText="Data de Cadastro"><p:outputLabel value="#{planeta.dataCadastro}"/></p:column>
+                        <p:column headerText="Ação">
+                            <div style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px;">
+                                <p:commandButton value="Excluir" action="#{planetaBean.delete}" styleClass="ui-button-warning" ajax="false">
+                                    <f:setPropertyActionListener value="#{planeta}" target="#{planetaBean.planeta}"/>
+                                </p:commandButton>
+                                <p:commandButton value="Visualizar" action="#{planetaBean.visualizar}" ajax="false">
+                                    <f:setPropertyActionListener value="#{planeta}" target="#{planetaBean.planeta}"/>
+                                </p:commandButton>
+                            </div>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+    <h:form id="formulario">
+        <div style="display: flex; align-items: center; flex-direction: column; gap: 10px">
+            <p:link outcome="listagem" value="Listagem de Planetas"/>
+            <div class="ui-fluid formgrid grid">
+                <p:outputLabel for="nome" value="Nome do Planeta"/>
+                <p:inputText id="nome" value="#{planetaBean.planeta.nome}"/>
+                <p:outputLabel for="coordX" value="Coordenada X"/>
+                <p:inputNumber id="coordX" value="#{planetaBean.planeta.coordX}"/>
+                <p:outputLabel for="coordY" value="Coordenada Y"/>
+                <p:inputNumber id="coordY" value="#{planetaBean.planeta.coordY}"/>
+            </div>
+            <p:commandButton action="#{planetaBean.save}" value="Cadastrar"/>
+        </div>
+    </h:form>
+</h:body>
+
+</html>
